@@ -24,5 +24,14 @@ describe 'BowlingGame' do
 
       expect(@game.score).to eq(20)
     end
+
+    it 'should count score for one spare follower by gutter balls' do
+      @game.roll(5)
+      @game.roll(5)
+      @game.roll(3)
+      roll_many(17, 0)
+
+      expect(@game.score).to eq(16)
+    end
   end
 end
