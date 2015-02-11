@@ -2,14 +2,19 @@ class Game
 
   def initialize
     @score = 0
+    @rolls = []
+    @currentRole = 0
   end
-  @score = 0
 
   def roll pins
-    @score += pins
+    @rolls[@currentRole] = pins
+    @currentRole += 1
   end
 
   def score
+    @rolls.each do |roll|
+      @score += roll
+    end
     @score
   end
 
