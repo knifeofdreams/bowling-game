@@ -7,15 +7,19 @@ class Game
   end
 
   def roll pins
-    @rolls[@currentRole] = pins
-    @currentRole += 1
+    @rolls << pins
   end
 
   def score
     index = 0
     for frame in 0...10
-      @score += @rolls[index] + @rolls[index + 1]
-      index += 2
+      if (@rolls[index] + @rolls[index + 1]) ==10
+        @score += 10 + @rolls[index + 2]
+        index += 2
+      else
+        @score += @rolls[index] + @rolls[index + 1]
+        index += 2
+      end
     end
     @score
   end
