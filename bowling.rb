@@ -12,8 +12,10 @@ class Game
   end
 
   def score
-    @rolls.each do |roll|
-      @score += roll
+    index = 0
+    for frame in 0...10
+      @score += @rolls[index] + @rolls[index + 1]
+      index += 2
     end
     @score
   end
