@@ -12,6 +12,11 @@ describe 'BowlingGame' do
     end
   end
 
+  def roll_spare
+    @game.roll(5)
+    @game.roll(5)
+  end
+
   describe 'score' do
     it 'should count score for gutter game' do
       roll_many(20, 0)
@@ -26,8 +31,7 @@ describe 'BowlingGame' do
     end
 
     it 'should count score for one spare follower by gutter balls' do
-      @game.roll(5)
-      @game.roll(5)
+      roll_spare
       @game.roll(3)
       roll_many(17, 0)
 

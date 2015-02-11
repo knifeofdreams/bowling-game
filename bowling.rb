@@ -11,17 +11,21 @@ class Game
   end
 
   def score
-    index = 0
+    firstInFrame = 0
     for frame in 0...10
-      if (@rolls[index] + @rolls[index + 1]) ==10
-        @score += 10 + @rolls[index + 2]
-        index += 2
+      if spare?(firstInFrame)
+        @score += 10 + @rolls[firstInFrame + 2]
+        firstInFrame += 2
       else
-        @score += @rolls[index] + @rolls[index + 1]
-        index += 2
+        @score += @rolls[firstInFrame] + @rolls[firstInFrame + 1]
+        firstInFrame += 2
       end
     end
     @score
+  end
+
+  def spare?(firstInFrame)
+    (@rolls[firstInFrame] + @rolls[firstInFrame + 1]) ==10
   end
 
 end
