@@ -17,6 +17,10 @@ describe 'BowlingGame' do
     @game.roll(5)
   end
 
+  def roll_strike
+    @game.roll(10)
+  end
+
   describe 'score' do
     it 'should count score for gutter game' do
       roll_many(20, 0)
@@ -36,6 +40,15 @@ describe 'BowlingGame' do
       roll_many(17, 0)
 
       expect(@game.score).to eq(16)
+    end
+
+    it 'should count score for one strike' do
+      roll_strike
+      @game.roll(3)
+      @game.roll(4)
+      roll_many(16, 0)
+
+      expect(@game.score).to eq(24)
     end
   end
 end
