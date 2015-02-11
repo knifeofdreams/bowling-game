@@ -50,5 +50,11 @@ describe 'BowlingGame' do
 
       expect(@game.score).to eq(24)
     end
+
+    it 'should count score for perfect game' do
+      roll_many(12, 10)
+
+      expect(@game.score).to eq(300)
+    end
   end
 end
