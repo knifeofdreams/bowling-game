@@ -1,10 +1,12 @@
 class Game
+  @@score = 0
 
   def roll pins
+    @@score += pins
   end
 
   def score
-    0
+    @@score
   end
 
 end

@@ -6,15 +6,23 @@ describe 'BowlingGame' do
     @game = Game.new
   end
 
-  it 'should be able to roll a ball' do
-    @game.roll(0)
+  def roll_many(n, pins)
+    n.times do
+      @game.roll(pins)
+    end
   end
 
-  it 'should count score for gutter game' do
-    20.times do
-      @game.roll(0)
+  describe 'score' do
+    it 'should count score for gutter game' do
+      roll_many(20, 0)
+
+      expect(@game.score).to eq(0)
     end
 
-    expect(@game.score).to eq(0)
+    it 'should count score for 20 ones' do
+      roll_many(20, 1)
+
+      expect(@game.score).to eq(20)
+    end
   end
 end
